@@ -1,0 +1,22 @@
+---
+- name: "Copy MariaDB 10.4 Stable"
+  copy:
+    src: mariadb.repo
+    dest: /etc/yum.repos.d/mariadb.repo
+
+- name: "Install MariaDB 10.4 server"
+  yum:
+    name: {{ packages }}
+    state: present
+    update_cache: yes
+  vars:
+    packages: 
+    - mariadb-server
+    - mariadb-client
+    - mariadb-devel
+
+- name: "Start and enable MariaDB 10.4 Service"
+  service:
+    name: mariadb
+    state: started
+    enabled: yes

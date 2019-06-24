@@ -1,0 +1,15 @@
+---
+- name: "Incldue prerequisite tasks"
+  include_tasks: prerequisite.yml
+
+- name: "Include MariaDB installation tasks"
+  include_tasks: mariadb.yml
+
+- name: "Include PHP installation tasks"
+  include_tasks: php.yml
+
+- name: "Include NGINX installation tasks"
+  include_tasks: nginx.yml
+
+- name: "Include MailWizz installation tasks"
+  include_tasks: mailwizz.yml

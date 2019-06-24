@@ -1,0 +1,42 @@
+---
+- name: "Install REMI release"
+  yum:
+    name: http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+    state: present
+
+- name: "Enable REMI release"
+  yum_repository:
+    name: "remi"
+    state: present
+
+- name: "Install PHP 7.2 Packages"
+  yum:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+    - php72-php
+    - php72-php-intl
+    - php72-php-opcache
+    - php72-php-mysqlnd
+    - php72-php-mbstring
+    - php72-php-gd
+    - php72-php-fpm
+    - php72-php-imap
+    - php72-php-tidy
+    - php72-php-phpiredis
+    - php72-php-common
+    - php72-php-xml
+    - php72-php-zip
+
+- name: "Copy PHP-FPM pool file"
+  copy:
+    src: www.conf
+    dest: /etc/opt/remi/php72/php-fpm.d/www.conf
+
+- name: "Start and enable PHP-FPM 7.2 service"
+  service:
+    name: php72-php-fpm
+    enabled: yes
+    state: started
+

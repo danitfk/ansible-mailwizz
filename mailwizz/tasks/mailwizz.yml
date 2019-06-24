@@ -1,0 +1,20 @@
+---
+- name: "Create Mailwizz User"
+  user:
+    name: mailwizz
+    comment: MailWizz EMA
+    shell: /bin/bash
+
+- name: "Download MailWizz File"
+  get_url:
+    url: "{{ mailwizz_url }}"
+    dest: /home/mailwizz/mailwizz.zip
+    owner: mailwizz
+    group: mailwizz
+
+- name: "Extract MailWizz"
+  unarchive:
+    src: /home/mailwizz/mailwizz.zip
+    dest: /home/mailwizz/mailwizz
+    owner: mailwizz
+    group: mailwizz  

@@ -1,0 +1,36 @@
+---
+- name: "Install NGINX Web Server"
+  yum:
+    name: nginx
+    state: present
+
+- name: "Start service and enable at boot"
+  serivce:
+    name: nginx
+    enabled: yes
+    status: started
+
+- name: "Copy NGINX Configuration file"
+  copy:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+
+- name "Optimize NGINX Configuration [Security: Buffers]"
+  copy:
+    src: buffers.conf
+    dest: /etc/nginx/conf.d/99-buffers.conf
+
+- name "Optimize NGINX Configuration [Security: Timeouts]"
+  copy:
+    src: timeouts.conf
+    dest: /etc/nginx/conf.d/99-timeouts.conf
+
+- name "Optimize NGINX Configuration [Performance: GZIP]"
+  copy:
+    src: gzip.conf
+    dest: /etc/nginx/conf.d/99-gzip.conf
+
+- name: "Create Virtualhost for MailWizz Domain"
+  template:
+    src: mailwizz.j2
+    dest: /etc/nginx/conf.d/01-mailwizz.conf

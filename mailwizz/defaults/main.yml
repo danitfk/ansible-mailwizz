@@ -1,0 +1,5 @@
+---
+mailwizz_domain: email.mailninja.com
+nginx_ssl: false
+nginx_cache: false
+nginx_limit_request: false

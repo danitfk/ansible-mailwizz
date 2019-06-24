@@ -1,0 +1,14 @@
+---
+- name: "Install dependecies packages"
+  yum:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+    - unzip
+    - epel-release
+    - "@Development Tools"
+
+- name: "Disable SELinux"
+  selinux:
+    state: disabled
