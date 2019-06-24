@@ -1,0 +1,8 @@
+# Ansible retry files 
+*.retry
+
+# Main playbook
+/main.yml
+
+# Inventory files
+/inventory/*
