@@ -1,5 +1,6 @@
 Ansible MailWizz
 =========
+[![Build Status](https://travis-ci.org/danitfk/ansible-mailwizz.svg?branch=master)](https://travis-ci.org/danitfk/ansible-mailwizz)
 
 This playbook prepare a complete environment to Install and Run [MailWizz  EMA](https://www.mailwizz.com/) system. 
 
