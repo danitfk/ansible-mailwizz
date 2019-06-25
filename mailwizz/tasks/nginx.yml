@@ -1,8 +1,12 @@
 ---
 - name: "Install NGINX Web Server"
   yum:
-    name: nginx
+    name: {{ packages }}
     state: present
+  vars:
+    packages:
+    - nginx
+    - python2-certbot-nginx
 
 - name: "Start service and enable at boot"
   serivce:
